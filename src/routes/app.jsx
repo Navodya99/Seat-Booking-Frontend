@@ -8,6 +8,7 @@ import AdminDashboard from "../pages/admindashboad/adminDashboard.jsx";
 import BookingManagement from "../component/bookingManagement/bookingManagement.jsx";
 import RoutesManagement from "../component/routesManagement/routesManagement.jsx";
 import UserManagement from "../component/userManagement/userManagement.jsx";
+import { AuthProvider } from '../context/AuthContext.jsx';
 
 function LayoutContent() {
   const location = useLocation();
@@ -38,9 +39,11 @@ function LayoutContent() {
 
 function Layout() {
   return (
-    <BrowserRouter>
-      <LayoutContent />
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <LayoutContent />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

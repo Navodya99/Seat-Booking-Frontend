@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const Login = () => {
     password: "",
   });
   const [error, setError] = useState("");
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     setFormData({
@@ -30,6 +32,8 @@ const Login = () => {
       if (response.data) {
         // Store user data in localStorage
         localStorage.setItem('user', JSON.stringify(response.data));
+        // Update global auth state
+        login(response.data);
         
         // Check if user is admin and redirect accordingly
         if (response.data.isAdmin) {
