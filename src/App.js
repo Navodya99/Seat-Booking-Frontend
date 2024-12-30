@@ -1,13 +1,11 @@
 import './App.css';
-import Navbar from './component/navbar/navbar';
-import Home from './pages/home/home';
+import Layout from './routes/app.jsx';
 
 
 function App() {
   return (
     <div className="justify-center">
-      <Navbar/>
-      <Home/>
+      <Layout/>
     </div>
   );
 }

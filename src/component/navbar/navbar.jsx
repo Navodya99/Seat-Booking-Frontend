@@ -1,17 +1,16 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-800">
+    <nav className="bg-gray-800 h-20 items-center ">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between max-w-7xl">
-        {/* Logo */}
         <div className="text-white text-2xl font-bold">
-          <a href="/">Logo</a>
+          <Link to="/">NTC </Link>
         </div>
 
-        {/* Hamburger Menu (Mobile) */}
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -34,35 +33,30 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Navigation Links */}
         <div
           className={`${
             isOpen ? "block" : "hidden"
           } md:flex space-x-6 md:space-x-8 items-center`}
         >
-          <a href=" #"
+          <Link
+            to="/"
             className="block text-white hover:text-gray-400 transition duration-300"
           >
             Home
-          </a>
-          <a
-            href="#about"
+          </Link>
+         
+          <Link
+            to="/login"
             className="block text-white hover:text-gray-400 transition duration-300"
           >
-            About
-          </a>
-          <a
-            href="#services"
-            className="block text-white hover:text-gray-400 transition duration-300"
+            Login
+          </Link>
+          <Link
+            to="/register"
+            className="block text-white bg-green-600 px-4 py-2 rounded-md hover:bg-green-700 transition duration-300"
           >
-            Services
-          </a>
-          <a
-            href="#contact"
-            className="block text-white hover:text-gray-400 transition duration-300"
-          >
-            Contact
-          </a>
+            Sign Up
+          </Link>
         </div>
       </div>
     </nav>

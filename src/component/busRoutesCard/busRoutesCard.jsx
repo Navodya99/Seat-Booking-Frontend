@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SeatBookingModal from "../modals/seatBookingModal";
 
 const BusRouteCard = ({
+  routeId,
   routeName,
   busName,
   departureTime,
@@ -57,18 +58,26 @@ const BusRouteCard = ({
 
       {/* Book Now button */}
       <div className="px-6 py-4">
-        <button
-          onClick={openModal}
-          className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
-        >
-          Book Now!
-        </button>
-      </div>
+  <button
+    onClick={openModal}
+    className={`w-full py-2 px-4 rounded-lg text-white ${
+      availableSeatsCount < 1
+        ? "bg-gray-500 cursor-not-allowed"
+        : "bg-blue-500 hover:bg-blue-700"
+    }`}
+    disabled={availableSeatsCount < 1}
+  >
+    Book Now!
+  </button>
+</div>
+
 
       {/* Modal */}
         <SeatBookingModal
         isModalOpen={isModalOpen}
-        availableSeatsCount={availableSeatsCount}/>
+        routeId={routeId}
+        onClose={() => setIsModalOpen(false)}
+        />
     </div>
   );
 };

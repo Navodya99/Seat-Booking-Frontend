@@ -22,6 +22,7 @@ function Home() {
         {busRoutes.map((route, index) => (
           <BusRouteCard
             key={index}
+            routeId = {route._id}
             routeName={route.routeName}
             busName={route.busName}
             departureTime={route.departureTime}
